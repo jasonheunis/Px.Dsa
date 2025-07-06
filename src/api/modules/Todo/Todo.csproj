@@ -4,6 +4,9 @@
     <AssemblyName>FSH.Starter.WebApi.Todo</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="OpenTelemetry.Api" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\framework\Core\Core.csproj" />
     <ProjectReference Include="..\..\framework\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
