@@ -9,16 +9,7 @@ builder.AddContainer("prometheus", "prom/prometheus")
        .WithBindMount("../../../compose/prometheus", "/etc/prometheus", isReadOnly: true)
        .WithHttpEndpoint(port: 9090, targetPort: 9090);
 
-var username = builder.AddParameter("mssql-username", "Px-Dsa-Dev");
-var password = builder.AddParameter("mssql-password", "sFbRBnQgGv7YMt6TuxGNXcwh7zhWpNpA");
-var port = builder.AddParameter("mssql-port", "1433");
-
-var database = builder.AddSqlServer("mssql", password, 1433)
-                      .WithDataVolume()
-                      .AddDatabase("Px-Dsa");
-
-var api = builder.AddProject<Projects.Server>("webapi")
-    .WaitFor(database);
+var api = builder.AddProject<Projects.Server>("webapi");
 
 var blazor = builder.AddProject<Projects.Client>("blazor");
 
